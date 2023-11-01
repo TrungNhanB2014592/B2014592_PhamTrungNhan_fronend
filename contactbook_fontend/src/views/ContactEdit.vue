@@ -10,8 +10,8 @@
   </div>
 </template>
 <script>
-import ContactForm from '@/components/ContactForm.vue';
-import ContactService from '@/services/contact.service';
+import ContactForm from "@/components/ContactForm.vue";
+import ContactService from "@/services/contact.service";
 export default {
   components: {
     ContactForm,
@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       contact: null,
-      message: '',
+      message: "",
     };
   },
   methods: {
@@ -33,9 +33,9 @@ export default {
         console.log(error);
         // Chuyển sang trang NotFound đồng thời giữ cho URL không đổi
         this.$router.push({
-          name: 'notfound',
+          name: "notfound",
           params: {
-            pathMatch: this.$route.path.split('/').slice(1),
+            pathMatch: this.$route.path.split("/").slice(1),
           },
           query: this.$route.query,
           hash: this.$route.hash,
@@ -45,16 +45,16 @@ export default {
     async updateContact(data) {
       try {
         await ContactService.update(this.contact._id, data);
-        this.message = 'Liên hệ được cập nhật thành công.';
+        this.message = "Liên hệ được cập nhật thành công.";
       } catch (error) {
         console.log(error);
       }
     },
     async deleteContact() {
-      if (confirm('Bạn muốn xóa Liên hệ này?')) {
+      if (confirm("Bạn muốn xóa Liên hệ này?")) {
         try {
           await ContactService.delete(this.contact._id);
-          this.$router.push({ name: 'contactbook' });
+          this.$router.push({ name: "contactbook" });
         } catch (error) {
           console.log(error);
         }
@@ -63,7 +63,7 @@ export default {
   },
   created() {
     this.getContact(this.id);
-    this.message = '';
+    this.message = "";
   },
 };
 </script>

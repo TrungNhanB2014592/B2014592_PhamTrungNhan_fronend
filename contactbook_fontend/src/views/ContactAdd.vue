@@ -6,8 +6,8 @@
   </div>
 </template>
 <script>
-import ContactForm from '@/components/ContactForm.vue';
-import ContactService from '@/services/contact.service';
+import ContactForm from "@/components/ContactForm.vue";
+import ContactService from "@/services/contact.service";
 export default {
   components: {
     ContactForm,
@@ -16,14 +16,14 @@ export default {
   data() {
     return {
       contact: null,
-      message: '',
+      message: "",
     };
   },
   methods: {
     async addContact(data) {
       try {
         await ContactService.create(data);
-        this.message = 'Thêm liên hệ thành công.';
+        this.message = "Thêm liên hệ thành công.";
       } catch (error) {
         console.log(error);
       }

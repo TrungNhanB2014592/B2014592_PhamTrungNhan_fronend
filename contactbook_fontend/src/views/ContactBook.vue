@@ -48,10 +48,10 @@
   </div>
 </template>
 <script>
-import ContactCard from '@/components/ContactCard.vue';
-import InputSearch from '@/components/InputSearch.vue';
-import ContactList from '@/components/ContactList.vue';
-import ContactService from '@/services/contact.service';
+import ContactCard from "@/components/ContactCard.vue";
+import InputSearch from "@/components/InputSearch.vue";
+import ContactList from "@/components/ContactList.vue";
+import ContactService from "@/services/contact.service";
 export default {
   components: {
     ContactCard,
@@ -62,7 +62,7 @@ export default {
     return {
       contacts: [],
       activeIndex: -1,
-      searchText: '',
+      searchText: "",
     };
   },
   watch: {
@@ -74,7 +74,7 @@ export default {
     contactStrings() {
       return this.contacts.map((contact) => {
         const { name, email, address, phone } = contact;
-        return [name, email, address, phone].join('');
+        return [name, email, address, phone].join("");
       });
     },
     filteredContacts() {
@@ -104,7 +104,7 @@ export default {
       this.activeIndex = -1;
     },
     async removeAllContacts() {
-      if (confirm('Bạn muốn xóa tất cả Liên hệ?')) {
+      if (confirm("Bạn muốn xóa tất cả Liên hệ?")) {
         try {
           await ContactService.deleteAll();
           this.refreshList();
@@ -114,7 +114,7 @@ export default {
       }
     },
     goToAddContact() {
-      this.$router.push({ name: 'contact.add' });
+      this.$router.push({ name: "contact.add" });
     },
   },
   mounted() {
